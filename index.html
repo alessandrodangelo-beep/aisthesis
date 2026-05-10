@@ -2347,6 +2347,78 @@ input::placeholder,
       }
     }
 
+
+    /* MODULE DESCRIPTION TYPOGRAPHY — Essence / Values / Founder descriptions only */
+    .essence-copy,
+    .values-body,
+    .founder-text {
+      font-family: var(--font-display, var(--serif)) !important;
+      font-style: italic !important;
+      font-weight: 300 !important;
+      letter-spacing: 0.012em !important;
+      color: rgba(245,242,236,0.76) !important;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .essence-copy {
+      max-width: 670px !important;
+      font-size: clamp(1.26rem, 1.42vw, 1.68rem) !important;
+      line-height: 1.38 !important;
+    }
+
+    .values-body {
+      max-width: 760px !important;
+      font-size: clamp(1.16rem, 1.22vw, 1.46rem) !important;
+      line-height: 1.46 !important;
+    }
+
+    .founder-text {
+      font-size: clamp(0.98rem, 0.98vw, 1.18rem) !important;
+      line-height: 1.42 !important;
+    }
+
+    @media (min-width: 1181px) {
+      .founder-text {
+        width: min(100%, 520px) !important;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .essence-copy,
+      .values-body,
+      .founder-text {
+        font-size: clamp(1.14rem, 5vw, 1.34rem) !important;
+        line-height: 1.44 !important;
+      }
+    }
+
+
+    /* PORTFOLIO CARDS — clickable affordance */
+    .project-card {
+      cursor: pointer;
+    }
+
+    .project-card .project-image img {
+      transition: transform 700ms ease, filter 700ms ease;
+      will-change: transform;
+    }
+
+    .project-card:hover .project-image img,
+    .project-card:focus-visible .project-image img {
+      transform: scale(1.045);
+      filter: brightness(0.94);
+    }
+
+    .project-card:hover .project-meta h3,
+    .project-card:focus-visible .project-meta h3 {
+      opacity: 0.82;
+    }
+
+    .project-card:focus-visible {
+      outline: 1px solid rgba(43,26,14,0.38);
+      outline-offset: 6px;
+    }
+
   </style>
 </head>
 <body>
@@ -2355,7 +2427,7 @@ input::placeholder,
       <nav class="nav" aria-label="Menu principale">
         <a href="#top">HOME</a>
         <a href="#about">ABOUT</a>
-        <a href="#portfolio">PORTFOLIO</a>
+        <a href="portfolio.html">PORTFOLIO</a>
         <a href="#contatti">CONTATTI</a>
       </nav>
     </div>
@@ -2412,27 +2484,27 @@ input::placeholder,
           <div class="section-bar"></div>
         </div>
         <div class="portfolio-grid">
-          <article class="project-card">
+          <a class="project-card" href="portfolio.html" aria-label="Apri il portfolio: Appartamento d'Epoca, Brera">
             <div class="project-image"><img src="progetti-left.webp" alt="Appartamento d'epoca a Milano" /></div>
             <div class="project-meta">
               <small>Milano · Residenziale · 2024</small>
               <h3>Appartamento d'Epoca, Brera</h3>
             </div>
-          </article>
-          <article class="project-card">
+          </a>
+          <a class="project-card" href="portfolio.html" aria-label="Apri il portfolio: Residenza d'Epoca">
             <div class="project-image"><img src="progetti-center.webp" alt="Residenza d'epoca a Torino" /></div>
             <div class="project-meta">
               <small>Torino · Residenziale · 2024</small>
               <h3>Residenza d'Epoca</h3>
             </div>
-          </article>
-          <article class="project-card">
+          </a>
+          <a class="project-card" href="portfolio.html" aria-label="Apri il portfolio: Casa Liberty">
             <div class="project-image"><img src="progetti-right.webp" alt="Casa Liberty a Monza" /></div>
             <div class="project-meta">
               <small>Monza · Residenziale · 2023</small>
               <h3>Casa Liberty</h3>
             </div>
-          </article>
+          </a>
         </div>
       </div>
     </section>

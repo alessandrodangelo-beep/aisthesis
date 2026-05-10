@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | AISTHESIS</title>
+  <meta name="description" content="Portfolio AISTHESIS: tre progetti residenziali in cui memoria, materia e sensibilità contemporanea dialogano nello spazio." />
+  <meta name="theme-color" content="#f0ece4" />
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" as="image" href="progetti-left.webp" fetchpriority="high">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f0ece4;
+      --bg-soft: #f5f2ec;
+      --brown: #2b1a0e;
+      --brown-dark: #261200;
+      --accent-brown: #7a5c3a;
+      --text: #2b1a0e;
+      --text-soft: rgba(43,26,14,0.72);
+      --text-cream: #f5f2ec;
+      --line-light: rgba(245,242,236,0.16);
+      --line-dark: rgba(43,26,14,0.14);
+      --max: 1440px;
+      --gutter: clamp(24px, 3vw, 56px);
+      --display: "Cormorant Garamond", "Didot", Georgia, serif;
+      --didone: "Antic Didone", "Didot", Georgia, serif;
+      --sans: "Jost", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: clip;
+    }
+
+    img { display: block; width: 100%; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    p, h1, h2, h3 { margin: 0; }
+
+    .site-header {
+      position: absolute;
+      inset: 0 0 auto 0;
+      z-index: 20;
+      padding-top: 28px;
+      color: #fcfbfa;
+    }
+
+    .header-inner {
+      width: 100%;
+      margin: 0;
+      padding: 0 var(--gutter) 14px;
+      border-bottom: 1px solid rgba(240,236,228,0.48);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .brand {
+      font-family: var(--display);
+      font-size: clamp(1.1rem, 1.25vw, 1.55rem);
+      font-weight: 300;
+      letter-spacing: 0.36em;
+      line-height: 1;
+      color: #fcfbfa;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(20px, 3vw, 52px);
+      font-size: clamp(0.68rem, 0.82vw, 0.82rem);
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fcfbfa;
+    }
+
+    .portfolio-hero {
+      min-height: 84svh;
+      background: var(--brown);
+      color: var(--text-cream);
+      display: grid;
+      grid-template-columns: minmax(0, 44%) minmax(0, 56%);
+      overflow: hidden;
+    }
+
+    .portfolio-hero-copy {
+      padding: clamp(132px, 12vw, 190px) var(--gutter) clamp(72px, 7vw, 118px);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .section-label {
+      font-size: clamp(0.68rem, 0.7vw, 0.82rem);
+      font-weight: 400;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: rgba(245,242,236,0.58);
+    }
+
+    .section-label--dark { color: var(--accent-brown); }
+
+    .section-bar {
+      width: 46px;
+      height: 2px;
+      background: currentColor;
+      margin-top: 18px;
+      color: rgba(245,242,236,0.92);
+    }
+
+    .section-label--dark + .section-bar { color: var(--accent-brown); }
+
+    .portfolio-title {
+      margin-top: clamp(58px, 6vw, 92px);
+      font-family: var(--display);
+      font-size: clamp(5.2rem, 10.4vw, 14rem);
+      font-weight: 300;
+      line-height: 0.86;
+      letter-spacing: -0.058em;
+      color: var(--text-cream);
+    }
+
+    .portfolio-intro {
+      margin-top: clamp(38px, 4vw, 64px);
+      padding-top: 30px;
+      border-top: 1px solid var(--line-light);
+      max-width: 680px;
+      color: rgba(245,242,236,0.70);
+      font-size: clamp(0.96rem, 1vw, 1.14rem);
+      line-height: 1.86;
+      letter-spacing: 0.01em;
+    }
+
+    .portfolio-hero-image {
+      min-height: 84svh;
+      background:
+        linear-gradient(0deg, rgba(18,10,6,0.10), rgba(18,10,6,0.10)),
+        url('progetti-left.webp') center center / cover no-repeat;
+    }
+
+    .project-section {
+      min-height: 760px;
+      display: grid;
+      grid-template-columns: minmax(0, 47%) minmax(0, 53%);
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .project-section--dark {
+      background: var(--brown);
+      color: var(--text-cream);
+    }
+
+    .project-section--reverse {
+      grid-template-columns: minmax(0, 53%) minmax(0, 47%);
+    }
+
+    .project-copy {
+      padding: clamp(82px, 7vw, 122px) clamp(48px, 5.4vw, 108px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .project-section--dark .project-copy {
+      background: var(--brown);
+    }
+
+    .project-image {
+      min-height: 760px;
+      overflow: hidden;
+      background: var(--brown-dark);
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+
+    .project-kicker {
+      font-size: clamp(0.68rem, 0.76vw, 0.86rem);
+      letter-spacing: 0.30em;
+      text-transform: uppercase;
+      color: var(--accent-brown);
+    }
+
+    .project-section--dark .project-kicker {
+      color: rgba(245,242,236,0.58);
+    }
+
+    .project-name {
+      margin-top: clamp(44px, 4.8vw, 74px);
+      font-family: var(--display);
+      font-size: clamp(3.7rem, 6.6vw, 9rem);
+      font-weight: 300;
+      line-height: 0.94;
+      letter-spacing: -0.056em;
+      color: inherit;
+      max-width: 820px;
+    }
+
+    .project-meta {
+      margin-top: clamp(32px, 3.8vw, 58px);
+      padding-top: 26px;
+      border-top: 1px solid var(--line-dark);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 720px;
+      font-size: clamp(0.66rem, 0.72vw, 0.82rem);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      line-height: 1.52;
+      color: rgba(43,26,14,0.64);
+    }
+
+    .project-section--dark .project-meta {
+      border-top-color: var(--line-light);
+      color: rgba(245,242,236,0.60);
+    }
+
+    .project-description {
+      margin-top: clamp(38px, 4vw, 62px);
+      max-width: 760px;
+      font-size: clamp(0.96rem, 1vw, 1.14rem);
+      line-height: 1.88;
+      letter-spacing: 0.01em;
+      color: rgba(43,26,14,0.78);
+    }
+
+    .project-section--dark .project-description {
+      color: rgba(245,242,236,0.72);
+    }
+
+    .project-tags {
+      margin-top: clamp(34px, 3.2vw, 52px);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .project-tags span {
+      border: 1px solid rgba(43,26,14,0.20);
+      padding: 9px 14px;
+      font-size: 0.68rem;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: rgba(43,26,14,0.66);
+    }
+
+    .project-section--dark .project-tags span {
+      border-color: rgba(245,242,236,0.18);
+      color: rgba(245,242,236,0.58);
+    }
+
+    .portfolio-note {
+      background: var(--bg);
+      padding: clamp(88px, 8vw, 138px) var(--gutter);
+      text-align: center;
+      border-top: 1px solid var(--line-dark);
+    }
+
+    .portfolio-note p {
+      width: min(100%, 1120px);
+      margin: 0 auto;
+      font-family: var(--display);
+      font-size: clamp(3.1rem, 5.8vw, 7.7rem);
+      font-weight: 300;
+      line-height: 0.98;
+      letter-spacing: -0.052em;
+      color: var(--text);
+    }
+
+    .portfolio-note em { font-style: italic; }
+
+    .page-nav {
+      background: var(--brown);
+      color: rgba(245,242,236,0.58);
+      padding: clamp(54px, 5.5vw, 86px) var(--gutter);
+      border-top: 1px solid rgba(245,242,236,0.10);
+    }
+
+    .page-nav-inner {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      align-items: center;
+      font-size: clamp(0.76rem, 0.82vw, 0.92rem);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .page-nav a {
+      border-bottom: 1px solid rgba(245,242,236,0.26);
+      padding-bottom: 8px;
+    }
+
+    .footer {
+      min-height: 130px;
+      background: var(--brown);
+      color: rgba(245,242,236,0.50);
+      display: flex;
+      align-items: center;
+      border-top: 1px solid rgba(245,242,236,0.10);
+    }
+
+    .footer-inner {
+      width: min(calc(100% - 2 * var(--gutter)), 1880px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      column-gap: clamp(56px, 7vw, 150px);
+      align-items: center;
+      font-size: clamp(0.82rem, 0.9vw, 1rem);
+      line-height: 1.35;
+    }
+
+    .footer-logo {
+      font-family: var(--display);
+      font-size: clamp(1.28rem, 1.38vw, 1.72rem);
+      letter-spacing: 0.34em;
+      color: var(--text-cream);
+    }
+
+    .footer-center { justify-self: center; }
+    .footer-right { justify-self: end; }
+
+    @media (max-width: 1180px) {
+      .portfolio-hero,
+      .project-section,
+      .project-section--reverse {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-hero-copy {
+        min-height: 72svh;
+        padding-top: 128px;
+      }
+
+      .portfolio-hero-image {
+        min-height: 58svh;
+      }
+
+      .project-section--reverse .project-image { order: 1; }
+      .project-section--reverse .project-copy { order: 2; }
+
+      .project-section,
+      .project-image {
+        min-height: auto;
+      }
+
+      .project-image {
+        height: 62svh;
+      }
+    }
+
+    @media (max-width: 780px) {
+      :root { --gutter: 18px; }
+
+      .site-header { padding-top: 18px; }
+      .header-inner {
+        padding-left: 16px;
+        padding-right: 16px;
+        justify-content: center;
+      }
+
+      .brand { display: none; }
+      .nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 0;
+        font-size: clamp(0.58rem, 2.55vw, 0.70rem);
+        letter-spacing: 0.105em;
+        white-space: nowrap;
+      }
+
+      .portfolio-title {
+        font-size: clamp(4.2rem, 18vw, 7rem);
+      }
+
+      .portfolio-intro,
+      .project-description {
+        font-size: 0.98rem;
+        line-height: 1.72;
+      }
+
+      .project-copy {
+        padding: 64px 24px 72px;
+      }
+
+      .project-name {
+        font-size: clamp(3.05rem, 14.5vw, 5.15rem);
+      }
+
+      .project-meta {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .project-image {
+        height: 420px;
+      }
+
+      .portfolio-note p {
+        font-size: clamp(2.72rem, 13vw, 4.4rem);
+      }
+
+      .page-nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer {
+        min-height: auto;
+        padding: 30px 0;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .footer-center,
+      .footer-right {
+        justify-self: start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" aria-label="Navigazione principale">
+    <div class="header-inner">
+      <a class="brand" href="index.html#top">AISTHESIS</a>
+      <nav class="nav" aria-label="Menu principale">
+        <a href="index.html#top">HOME</a>
+        <a href="index.html#about">ABOUT</a>
+        <a href="portfolio.html">PORTFOLIO</a>
+        <a href="index.html#contatti">CONTATTI</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="portfolio-hero" aria-label="Portfolio AISTHESIS">
+      <div class="portfolio-hero-copy">
+        <div>
+          <div class="section-label">Progetti selezionati</div>
+          <div class="section-bar"></div>
+          <h1 class="portfolio-title">Portfolio</h1>
+          <p class="portfolio-intro">Tre interni residenziali, tre modi di interpretare la stessa direzione: far convivere memoria, materia e sensibilità contemporanea senza perdere la voce originaria dello spazio.</p>
+        </div>
+      </div>
+      <div class="portfolio-hero-image" aria-hidden="true"></div>
+    </section>
+
+    <section class="project-section project-section--dark" id="brera" aria-label="Appartamento d'Epoca, Brera">
+      <div class="project-copy">
+        <div class="project-kicker">Progetto 01</div>
+        <h2 class="project-name">Appartamento d'Epoca, Brera</h2>
+        <div class="project-meta">
+          <span>Milano</span>
+          <span>Residenziale</span>
+          <span>2024</span>
+        </div>
+        <p class="project-description">Uno spazio domestico costruito su equilibrio e misura: superfici morbide, luce controllata e dettagli essenziali lavorano insieme per trasformare la zona giorno in un luogo di quiete, presenza e continuità.</p>
+        <div class="project-tags" aria-label="Temi progetto">
+          <span>Materia</span>
+          <span>Luce</span>
+          <span>Memoria</span>
+        </div>
+      </div>
+      <div class="project-image"><img src="progetti-left.webp" alt="Appartamento d'Epoca, Brera"></div>
+    </section>
+
+    <section class="project-section project-section--reverse" id="residenza" aria-label="Residenza d'Epoca">
+      <div class="project-image"><img src="progetti-center.webp" alt="Residenza d'Epoca"></div>
+      <div class="project-copy">
+        <div class="project-kicker">Progetto 02</div>
+        <h2 class="project-name">Residenza d'Epoca</h2>
+        <div class="project-meta">
+          <span>Torino</span>
+          <span>Residenziale</span>
+          <span>2024</span>
+        </div>
+        <p class="project-description">Una camera pensata come pausa: volumi puliti, palette calda e luce indiretta costruiscono un'atmosfera intima, dove ogni elemento sostiene il ritmo silenzioso dell'abitare.</p>
+        <div class="project-tags" aria-label="Temi progetto">
+          <span>Intimità</span>
+          <span>Silenzio</span>
+          <span>Ritmo</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section project-section--dark" id="liberty" aria-label="Casa Liberty">
+      <div class="project-copy">
+        <div class="project-kicker">Progetto 03</div>
+        <h2 class="project-name">Casa Liberty</h2>
+        <div class="project-meta">
+          <span>Monza</span>
+          <span>Residenziale</span>
+          <span>2023</span>
+        </div>
+        <p class="project-description">Un interno in cui il carattere storico non viene neutralizzato, ma riletto: elementi classici, arte contemporanea e arredi morbidi generano una tensione elegante tra radice e presenza.</p>
+        <div class="project-tags" aria-label="Temi progetto">
+          <span>Contrasto</span>
+          <span>Arte</span>
+          <span>Eredità</span>
+        </div>
+      </div>
+      <div class="project-image"><img src="progetti-right.webp" alt="Casa Liberty"></div>
+    </section>
+
+    <section class="portfolio-note" aria-label="Nota progettuale">
+      <p>Ogni progetto nasce da una lettura: non solo dello spazio, ma del modo in cui quello spazio deve essere <em>abitato.</em></p>
+    </section>
+
+    <nav class="page-nav" aria-label="Navigazione portfolio">
+      <div class="page-nav-inner">
+        <a href="index.html#portfolio">Torna ai progetti</a>
+        <a href="index.html#contatti">Parla del tuo progetto</a>
+      </div>
+    </nav>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">AISTHESIS</div>
+      <div class="footer-center">Contemporary Heritage Design</div>
+      <div class="footer-right">Melania Molisse</div>
+    </div>
+  </footer>
+</body>
+</html>
