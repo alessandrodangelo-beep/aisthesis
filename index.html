@@ -11,6 +11,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" as="image" href="hero-picture.webp" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Antic+Didone&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -112,7 +113,7 @@
       position: relative;
       background:
         linear-gradient(0deg, rgba(18,10,6,0.18), rgba(18,10,6,0.18)),
-        url('hero picture.png') center center / cover no-repeat;
+        url('hero-picture.webp') center center / cover no-repeat;
       display: block;
       color: var(--bg);
       overflow: hidden;
@@ -269,12 +270,12 @@
     }
 
     .essence-image--left {
-      background-image: url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=88');
+      background-image: url('essence-left.webp');
       background-position: center left;
     }
 
     .essence-image--right {
-      background-image: url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=88');
+      background-image: url('essence-right.webp');
       background-position: center center;
     }
 
@@ -358,7 +359,7 @@
     .founder-photo {
       background:
         linear-gradient(0deg, rgba(246,242,235,0.04), rgba(246,242,235,0.04)),
-        url('whatsgirl.png') center center / cover no-repeat;
+        url('founder-photo.webp') center center / cover no-repeat;
       min-height: 100%;
       grid-column: 1;
       grid-row: 1;
@@ -468,7 +469,7 @@
       height: 100%;
       min-height: 760px;
       width: 100%;
-      background: url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1600&q=90') center center / cover no-repeat;
+      background: url('valori.webp') center center / cover no-repeat;
       opacity: 0.88;
     }
 
@@ -524,6 +525,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center center;
     }
 
     .project-meta {
@@ -1202,7 +1204,7 @@ input::placeholder,
     .founder-photo {
       background:
         linear-gradient(0deg, rgba(246,242,235,0.04), rgba(246,242,235,0.04)),
-        url('whatsgirl.png') center center / cover no-repeat;
+        url('founder-photo.webp') center center / cover no-repeat;
     }
 
   
@@ -2218,6 +2220,108 @@ input::placeholder,
       }
     }
 
+
+
+    /* FOUNDER MODULE — composite visual image + existing bio text */
+    @media (min-width: 1181px) {
+      .founder {
+        grid-template-columns: minmax(0, 70%) minmax(0, 30%) !important;
+        min-height: 620px !important;
+        position: relative !important;
+        background: var(--brown) !important;
+      }
+
+      .founder-photo {
+        background:
+          url('founder-photo.webp') center center / cover no-repeat !important;
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+        min-height: 100% !important;
+        height: 100% !important;
+      }
+
+      .founder-title,
+      .founder-title-clean,
+      .founder-title-split {
+        display: none !important;
+      }
+
+      .founder-copy {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+        background: var(--brown) !important;
+        padding: clamp(64px, 6vw, 96px) clamp(34px, 3.6vw, 62px) clamp(64px, 6vw, 96px) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+      }
+
+      .founder-text {
+        width: min(100%, 500px) !important;
+        font-size: clamp(0.82rem, 0.78vw, 0.96rem) !important;
+        line-height: 1.58 !important;
+        color: rgba(245,242,236,0.72) !important;
+      }
+    }
+
+    @media (max-width: 1180px) {
+      .founder-title,
+      .founder-title-clean,
+      .founder-title-split {
+        display: none !important;
+      }
+
+      .founder-photo {
+        background:
+          url('founder-photo.webp') center center / cover no-repeat !important;
+      }
+    }
+
+
+    /* VALUES MODULE — local root image + section bar colour alignment */
+    .values .section-bar {
+      color: rgba(255,255,255,0.92) !important;
+      background: currentColor !important;
+    }
+
+    .values-image {
+      background: url('valori.webp') center center / cover no-repeat !important;
+    }
+
+
+    /* BROWN MODULE DIVIDER — shorter centred line, asymmetric spacing */
+    .brown-module-divider {
+      background: var(--brown);
+      padding-top: clamp(22px, 2vw, 32px);
+      padding-bottom: clamp(44px, 4vw, 64px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .brown-module-divider span {
+      display: block;
+      width: min(calc(100% - 2 * var(--gutter)), var(--max));
+      height: 1px;
+      background: rgba(245,242,236,0.16);
+    }
+
+    .brown-module-divider + .founder {
+      border-top: 0 !important;
+    }
+
+    @media (max-width: 780px) {
+      .brown-module-divider {
+        padding-top: 18px;
+        padding-bottom: 36px;
+      }
+
+      .brown-module-divider span {
+        width: calc(100% - 48px);
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -2284,21 +2388,21 @@ input::placeholder,
         </div>
         <div class="portfolio-grid">
           <article class="project-card">
-            <div class="project-image"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=88" alt="Appartamento d'epoca a Milano" /></div>
+            <div class="project-image"><img src="progetti-left.webp" alt="Appartamento d'epoca a Milano" /></div>
             <div class="project-meta">
               <small>Milano · Residenziale · 2024</small>
               <h3>Appartamento d'Epoca, Brera</h3>
             </div>
           </article>
           <article class="project-card">
-            <div class="project-image"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=88" alt="Residenza d'epoca a Torino" /></div>
+            <div class="project-image"><img src="progetti-center.webp" alt="Residenza d'epoca a Torino" /></div>
             <div class="project-meta">
               <small>Torino · Residenziale · 2024</small>
               <h3>Residenza d'Epoca</h3>
             </div>
           </article>
           <article class="project-card">
-            <div class="project-image"><img src="https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=1200&q=88" alt="Casa Liberty a Monza" /></div>
+            <div class="project-image"><img src="progetti-right.webp" alt="Casa Liberty a Monza" /></div>
             <div class="project-meta">
               <small>Monza · Residenziale · 2023</small>
               <h3>Casa Liberty</h3>
@@ -2321,9 +2425,10 @@ input::placeholder,
       <div class="values-divider"></div>
     </section>
 
+    <div class="brown-module-divider" aria-hidden="true"><span></span></div>
+
     <section class="founder" aria-label="Founder">
       <div class="founder-photo" aria-hidden="true"></div>
-      <div class="founder-title">Who's<br>that<br>girl?</div>
       <div class="founder-copy">
         <div class="founder-text">
           <p>Sono Melania, designer e founder di AISTHESIS.</p>
