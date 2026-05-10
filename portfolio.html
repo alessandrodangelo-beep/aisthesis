@@ -446,15 +446,75 @@
         justify-self: start;
       }
     }
+
+
+    /* HEADER/FOOTER LOGO IMAGE — aligned with index */
+    .brand-logo-link {
+      display: inline-flex;
+      align-items: center;
+      flex: 0 0 auto;
+      width: clamp(96px, 9.2vw, 132px);
+      height: 22px;
+      overflow: hidden;
+    }
+
+    .brand-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: left center;
+      display: block;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .footer-logo-img {
+      width: clamp(104px, 9.8vw, 142px);
+      height: 24px;
+      object-fit: contain;
+      object-position: left center;
+      display: block;
+    }
+
+    @media (max-width: 780px) {
+      .brand {
+        display: inline-flex;
+      }
+
+      .brand-logo-link {
+        width: 92px;
+        height: 20px;
+      }
+
+      .header-inner {
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .nav {
+        width: auto;
+        flex: 1 1 auto;
+      }
+
+      .footer-logo-img {
+        width: 116px;
+        height: 22px;
+      }
+    }
+
   </style>
 </head>
 <body>
   <header class="site-header" aria-label="Navigazione principale">
     <div class="header-inner">
-      <a class="brand" href="index.html#top">AISTHESIS</a>
+      <a class="brand brand-logo-link" href="index.html#top" aria-label="AISTHESIS home"><img class="brand-logo-img" src="aisthesis-wordmark-nav.png" alt="AISTHESIS"></a>
       <nav class="nav" aria-label="Menu principale">
         <a href="index.html#top">HOME</a>
-        <a href="index.html#about">ABOUT</a>
+        <a href="index.html#founder">ABOUT</a>
         <a href="portfolio.html">PORTFOLIO</a>
         <a href="index.html#contatti">CONTATTI</a>
       </nav>
@@ -545,7 +605,7 @@
 
   <footer class="footer">
     <div class="footer-inner">
-      <div class="footer-logo">AISTHESIS</div>
+      <div class="footer-logo"><img class="footer-logo-img" src="aisthesis-wordmark-nav.png" alt="AISTHESIS"></div>
       <div class="footer-center">Contemporary Heritage Design</div>
       <div class="footer-right">Melania Molisse</div>
     </div>

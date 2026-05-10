@@ -469,7 +469,7 @@
       height: 100%;
       min-height: 760px;
       width: 100%;
-      background: url('valori.webp') center center / cover no-repeat;
+      background: url('material.webp') center center / cover no-repeat;
       opacity: 0.88;
     }
 
@@ -2285,7 +2285,7 @@ input::placeholder,
     }
 
     .values-image {
-      background: url('valori.webp') center center / cover no-repeat !important;
+      background: url('material.webp') center center / cover no-repeat !important;
     }
 
 
@@ -2441,14 +2441,104 @@ input::placeholder,
       color: rgba(43,26,14,0.92);
     }
 
+
+    /* MOBILE VALUES → FOUNDER SPACING FIX */
+    @media (max-width: 780px) {
+      .values {
+        min-height: 0 !important;
+        height: auto !important;
+      }
+
+      .values-grid {
+        min-height: 0 !important;
+        height: auto !important;
+        grid-template-columns: 1fr !important;
+      }
+
+      .values-copy {
+        padding-bottom: 40px !important;
+      }
+
+      .values-image {
+        display: block !important;
+        width: 100% !important;
+        min-height: 300px !important;
+        height: 300px !important;
+        background: url('material.webp') center center / cover no-repeat !important;
+        opacity: 0.88 !important;
+      }
+
+      .values-divider {
+        display: none !important;
+      }
+
+      .brown-module-divider {
+        padding-top: 12px !important;
+        padding-bottom: 24px !important;
+      }
+    }
+
+
+    /* HEADER / FOOTER WORDMARK LOGO */
+    .site-logo {
+      display: inline-flex;
+      align-items: center;
+      width: clamp(96px, 8.2vw, 148px);
+      flex: 0 0 auto;
+      line-height: 0;
+    }
+
+    .site-logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .footer-wordmark-img {
+      width: clamp(128px, 10vw, 180px);
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    @media (min-width: 781px) {
+      .header-inner {
+        justify-content: space-between !important;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .header-inner {
+        justify-content: space-between !important;
+        gap: 18px !important;
+      }
+
+      .site-logo {
+        width: clamp(82px, 21vw, 106px);
+      }
+
+      .nav {
+        width: auto !important;
+        flex: 1 1 auto !important;
+      }
+
+      .footer-wordmark-img {
+        width: 124px;
+      }
+    }
+
   </style>
 </head>
 <body>
   <header class="site-header" aria-label="Navigazione principale">
     <div class="header-inner">
+      <a class="site-logo" href="#top" aria-label="AISTHESIS home">
+        <img src="aisthesis-wordmark-nav.png" alt="AISTHESIS" />
+      </a>
       <nav class="nav" aria-label="Menu principale">
         <a href="#top">HOME</a>
-        <a href="#about">ABOUT</a>
+        <a href="#founder">ABOUT</a>
         <a href="portfolio.html">PORTFOLIO</a>
         <a href="#contatti">CONTATTI</a>
       </nav>
@@ -2546,7 +2636,7 @@ input::placeholder,
 
     <div class="brown-module-divider" aria-hidden="true"><span></span></div>
 
-    <section class="founder" aria-label="Founder">
+    <section class="founder" id="founder" aria-label="Founder">
       <div class="founder-photo" aria-hidden="true"></div>
       <div class="founder-copy">
         <div class="founder-text">
@@ -2568,7 +2658,7 @@ input::placeholder,
           <div class="section-bar"></div>
           <h2 class="contact-title">Parliamo del tuo spazio</h2>
           <div class="contact-copy">Se desideri raccontare un progetto, una casa o un luogo da reinterpretare, puoi iniziare da qui.</div>
-          <div class="contact-details">Email: <a href="mailto:hello@aisthesisstudio.com">hello@aisthesisstudio.com</a><br>Instagram: <a href="https://www.instagram.com/aisthesis.studio" target="_blank" rel="noopener">@aisthesis.studio</a><br>Milano · Monza · Nord Italia · Clienti internazionali</div>
+          <div class="contact-details">Instagram: <a href="https://www.instagram.com/__aisthesis__design__/" target="_blank" rel="noopener">__aisthesis__design__</a><br>Milano · Monza · Nord Italia · Clienti internazionali</div>
         </div>
         <form class="contact-form" action="https://formspree.io/f/xgodpbdr" method="POST" data-formspree-form>
           <div class="form-row">
@@ -2590,13 +2680,13 @@ input::placeholder,
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-left">
-        <div class="footer-logo">AISTHESIS</div>
+        <img class="footer-wordmark-img" src="aisthesis-wordmark-nav.png" alt="AISTHESIS" />
         <div class="footer-tagline">Contemporary Heritage Design</div>
       </div>
 
       <div class="footer-center">
-        <div>hello@aisthesisstudio.com</div>
-        <div>@aisthesis.studio</div>
+        <div>Instagram</div>
+        <div><a href="https://www.instagram.com/__aisthesis__design__/" target="_blank" rel="noopener">__aisthesis__design__</a></div>
       </div>
 
       <div class="footer-right">
