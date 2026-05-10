@@ -2323,73 +2323,24 @@ input::placeholder,
     }
 
 
-    /* FOUNDER MODULE — show full composite image, no vertical crop */
-    @media (min-width: 1181px) {
-      .founder {
-        min-height: auto !important;
-        align-items: stretch !important;
-      }
-
-      .founder-photo {
-        aspect-ratio: 860 / 768 !important;
-        min-height: 0 !important;
-        height: auto !important;
-        background: url('founder-photo.webp') center center / 100% 100% no-repeat !important;
-      }
+    /* CONTACT FORM — inline Formspree feedback */
+    .form-status {
+      min-height: 1.4em;
+      margin-top: 4px;
+      font-family: var(--sans);
+      font-size: clamp(0.78rem, 0.76vw, 0.9rem);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      line-height: 1.45;
+      color: rgba(43,26,14,0.72);
     }
 
-    @media (max-width: 1180px) {
-      .founder-photo {
-        aspect-ratio: 860 / 768 !important;
-        min-height: 0 !important;
-        height: auto !important;
-        background: url('founder-photo.webp') center center / 100% 100% no-repeat !important;
-      }
+    .form-status.is-success {
+      color: rgba(43,26,14,0.82);
     }
 
-
-    /* MODULE DESCRIPTION TYPOGRAPHY — Essence / Values / Founder descriptions only */
-    .essence-copy,
-    .values-body,
-    .founder-text {
-      font-family: var(--font-display, var(--serif)) !important;
-      font-style: italic !important;
-      font-weight: 300 !important;
-      letter-spacing: 0.012em !important;
-      color: rgba(245,242,236,0.76) !important;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .essence-copy {
-      max-width: 670px !important;
-      font-size: clamp(1.26rem, 1.42vw, 1.68rem) !important;
-      line-height: 1.38 !important;
-    }
-
-    .values-body {
-      max-width: 760px !important;
-      font-size: clamp(1.16rem, 1.22vw, 1.46rem) !important;
-      line-height: 1.46 !important;
-    }
-
-    .founder-text {
-      font-size: clamp(0.98rem, 0.98vw, 1.18rem) !important;
-      line-height: 1.42 !important;
-    }
-
-    @media (min-width: 1181px) {
-      .founder-text {
-        width: min(100%, 520px) !important;
-      }
-    }
-
-    @media (max-width: 780px) {
-      .essence-copy,
-      .values-body,
-      .founder-text {
-        font-size: clamp(1.14rem, 5vw, 1.34rem) !important;
-        line-height: 1.44 !important;
-      }
+    .form-status.is-error {
+      color: rgba(43,26,14,0.92);
     }
 
   </style>
@@ -2521,7 +2472,7 @@ input::placeholder,
           <div class="contact-copy">Se desideri raccontare un progetto, una casa o un luogo da reinterpretare, puoi iniziare da qui.</div>
           <div class="contact-details">Email: <a href="mailto:hello@aisthesisstudio.com">hello@aisthesisstudio.com</a><br>Instagram: <a href="https://www.instagram.com/aisthesis.studio" target="_blank" rel="noopener">@aisthesis.studio</a><br>Milano · Monza · Nord Italia · Clienti internazionali</div>
         </div>
-        <form class="contact-form" action="https://formspree.io/f/xgodpbdr" method="POST">
+        <form class="contact-form" action="https://formspree.io/f/xgodpbdr" method="POST" data-formspree-form>
           <div class="form-row">
             <input type="text" name="nome" placeholder="Nome" autocomplete="name" required />
             <input type="email" name="email" placeholder="Email" autocomplete="email" required />
@@ -2532,6 +2483,7 @@ input::placeholder,
           </div>
           <textarea name="progetto" placeholder="Descrizione del progetto" required></textarea>
           <button class="btn" type="submit">Richiedi una consulenza</button>
+          <p class="form-status" data-form-status aria-live="polite"></p>
         </form>
       </div>
     </section>
@@ -2555,5 +2507,61 @@ input::placeholder,
       </div>
     </div>
   </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.querySelector('[data-formspree-form]');
+      if (!form) return;
+
+      const status = form.querySelector('[data-form-status]');
+      const submitButton = form.querySelector('button[type="submit"]');
+      const defaultButtonText = submitButton ? submitButton.textContent : '';
+
+      form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        if (status) {
+          status.textContent = '';
+          status.classList.remove('is-success', 'is-error');
+        }
+
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.textContent = 'Invio in corso';
+        }
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            form.reset();
+            if (status) {
+              status.textContent = 'Grazie, il messaggio è stato inviato correttamente.';
+              status.classList.add('is-success');
+            }
+          } else {
+            if (status) {
+              status.textContent = 'Non è stato possibile inviare il messaggio. Riprova tra poco.';
+              status.classList.add('is-error');
+            }
+          }
+        } catch (error) {
+          if (status) {
+            status.textContent = 'Non è stato possibile inviare il messaggio. Controlla la connessione e riprova.';
+            status.classList.add('is-error');
+          }
+        } finally {
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent = defaultButtonText;
+          }
+        }
+      });
+    });
+  </script>
+
 </body>
 </html>
