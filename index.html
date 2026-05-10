@@ -2322,6 +2322,31 @@ input::placeholder,
       }
     }
 
+
+    /* FOUNDER MODULE — show full composite image, no vertical crop */
+    @media (min-width: 1181px) {
+      .founder {
+        min-height: auto !important;
+        align-items: stretch !important;
+      }
+
+      .founder-photo {
+        aspect-ratio: 860 / 768 !important;
+        min-height: 0 !important;
+        height: auto !important;
+        background: url('founder-photo.webp') center center / 100% 100% no-repeat !important;
+      }
+    }
+
+    @media (max-width: 1180px) {
+      .founder-photo {
+        aspect-ratio: 860 / 768 !important;
+        min-height: 0 !important;
+        height: auto !important;
+        background: url('founder-photo.webp') center center / 100% 100% no-repeat !important;
+      }
+    }
+
   </style>
 </head>
 <body>
