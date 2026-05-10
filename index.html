@@ -2392,33 +2392,6 @@ input::placeholder,
       }
     }
 
-
-    /* PORTFOLIO CARDS — clickable affordance */
-    .project-card {
-      cursor: pointer;
-    }
-
-    .project-card .project-image img {
-      transition: transform 700ms ease, filter 700ms ease;
-      will-change: transform;
-    }
-
-    .project-card:hover .project-image img,
-    .project-card:focus-visible .project-image img {
-      transform: scale(1.045);
-      filter: brightness(0.94);
-    }
-
-    .project-card:hover .project-meta h3,
-    .project-card:focus-visible .project-meta h3 {
-      opacity: 0.82;
-    }
-
-    .project-card:focus-visible {
-      outline: 1px solid rgba(43,26,14,0.38);
-      outline-offset: 6px;
-    }
-
   </style>
 </head>
 <body>
@@ -2427,7 +2400,7 @@ input::placeholder,
       <nav class="nav" aria-label="Menu principale">
         <a href="#top">HOME</a>
         <a href="#about">ABOUT</a>
-        <a href="portfolio.html">PORTFOLIO</a>
+        <a href="#portfolio">PORTFOLIO</a>
         <a href="#contatti">CONTATTI</a>
       </nav>
     </div>
@@ -2484,27 +2457,27 @@ input::placeholder,
           <div class="section-bar"></div>
         </div>
         <div class="portfolio-grid">
-          <a class="project-card" href="portfolio.html" aria-label="Apri il portfolio: Appartamento d'Epoca, Brera">
+          <article class="project-card">
             <div class="project-image"><img src="progetti-left.webp" alt="Appartamento d'epoca a Milano" /></div>
             <div class="project-meta">
               <small>Milano · Residenziale · 2024</small>
               <h3>Appartamento d'Epoca, Brera</h3>
             </div>
-          </a>
-          <a class="project-card" href="portfolio.html" aria-label="Apri il portfolio: Residenza d'Epoca">
+          </article>
+          <article class="project-card">
             <div class="project-image"><img src="progetti-center.webp" alt="Residenza d'epoca a Torino" /></div>
             <div class="project-meta">
               <small>Torino · Residenziale · 2024</small>
               <h3>Residenza d'Epoca</h3>
             </div>
-          </a>
-          <a class="project-card" href="portfolio.html" aria-label="Apri il portfolio: Casa Liberty">
+          </article>
+          <article class="project-card">
             <div class="project-image"><img src="progetti-right.webp" alt="Casa Liberty a Monza" /></div>
             <div class="project-meta">
               <small>Monza · Residenziale · 2023</small>
               <h3>Casa Liberty</h3>
             </div>
-          </a>
+          </article>
         </div>
       </div>
     </section>
@@ -2548,8 +2521,7 @@ input::placeholder,
           <div class="contact-copy">Se desideri raccontare un progetto, una casa o un luogo da reinterpretare, puoi iniziare da qui.</div>
           <div class="contact-details">Email: <a href="mailto:hello@aisthesisstudio.com">hello@aisthesisstudio.com</a><br>Instagram: <a href="https://www.instagram.com/aisthesis.studio" target="_blank" rel="noopener">@aisthesis.studio</a><br>Milano · Monza · Nord Italia · Clienti internazionali</div>
         </div>
-        <form class="contact-form" name="contact" method="POST" data-netlify="true">
-          <input type="hidden" name="form-name" value="contact" />
+        <form class="contact-form" action="https://formspree.io/f/xgodpbdr" method="POST">
           <div class="form-row">
             <input type="text" name="nome" placeholder="Nome" autocomplete="name" required />
             <input type="email" name="email" placeholder="Email" autocomplete="email" required />
